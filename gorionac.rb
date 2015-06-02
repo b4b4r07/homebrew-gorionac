@@ -10,13 +10,13 @@ class Gorionac < Formula
 
   def install
     ENV['GOPATH'] = buildpath
-    mkdir_p buildpath/'src/github.com/b4b4r07'
-    ln_s buildpath, buildpath/'src/github.com/b4b4r07/gorionac'
     system 'go', 'get', 'github.com/daviddengcn/go-colortext'
     system 'go', 'get', 'github.com/cheggaaa/pb'
     system 'go', 'get', 'github.com/k0kubun/pp'
     system 'go', 'get', 'gopkg.in/yaml.v2'
-    system 'go', 'build'
+    mkdir_p buildpath/'src/github.com/b4b4r07/gorionac'
+    ln_s buildpath/'search', buildpath/'src/github.com/b4b4r07/gorionac/.'
+    system 'go', 'build', '-o', 'gorionac'
     bin.install 'gorionac'
   end
 end
